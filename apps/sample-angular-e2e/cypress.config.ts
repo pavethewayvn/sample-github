@@ -11,9 +11,9 @@ export default defineConfig({
         production: 'npx nx run sample-angular:serve-static',
       },
       ciWebServerCommand: 'npx nx run sample-angular:serve-static',
-      ciBaseUrl: 'http://localhost:4200',
+      // ciBaseUrl: 'http://localhost:4200',
     }),
-    baseUrl: 'http://localhost:4200',
+    // baseUrl: 'http://localhost:4200',
   },
 });
 

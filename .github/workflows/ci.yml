@@ -30,8 +30,11 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - run: npm install --force
-      # - run: npm ci --legacy-peer-deps
+      - name: Set NODE_OPTIONS to disable WASI
+        run: echo "NODE_OPTIONS=--no-experimental-wasi" >> $GITHUB_ENV
+
+      # - run: npm install --force
+      - run: npm ci --legacy-peer-deps
       - run: npx cypress install
       - uses: nrwl/nx-set-shas@v4
 
@@ -40,7 +43,7 @@ jobs:
       # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
       # When you enable task distribution, run the e2e-ci task instead of e2e
       # - run: npx nx affected -t lint test build e2e
-      - run: npx nx reset
+      # - run: npx nx reset
       # - run: npx nx graph --file=graph.json
       # - run: npx nx affected -t lint test build e2e --base=master --head=HEAD
-      - run: npx nx affected -t build e2e --base=master --head=HEAD --parallel --verbose
+      - run: npx nx affected -t build e2e --base=master --head=HEAD --verbose
