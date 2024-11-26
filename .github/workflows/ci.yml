@@ -29,7 +29,12 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - run: echo 'NODE_OPTIONS="--no-experimental-wasi"' >> $GITHUB_ENV
+      - run: echo "NODE_OPTIONS=--no-experimental-wasi" >> $GITHUB_ENV
+
+      - name: Set NX environment variables
+        run: |
+          echo "NX_BASE=master" >> $GITHUB_ENV
+          echo "NX_HEAD=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
       # - run: npm install --force
       - run: npm ci --legacy-peer-deps
