@@ -49,4 +49,6 @@ jobs:
       # - run: npx nx reset
       # - run: npx nx graph --file=graph.json
       # - run: npx nx affected -t lint test build e2e --base=master --head=HEAD
-      - run: npx nx affected -t build e2e --base=master --head=HEAD --verbose
+      # - run: npx nx affected -t build e2e --base=master --head=HEAD --verbose
+
+      - run: npx nx affected -t build e2e --base=$NX_BASE --head=$NX_HEAD --verbose
