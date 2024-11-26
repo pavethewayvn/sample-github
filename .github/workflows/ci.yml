@@ -13,6 +13,8 @@ permissions:
 jobs:
   main:
     runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --no-experimental-wasi
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,9 +31,6 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-
-      - name: Set NODE_OPTIONS to disable WASI
-        run: echo "NODE_OPTIONS=--no-experimental-wasi" >> $GITHUB_ENV
 
       # - run: npm install --force
       - run: npm ci --legacy-peer-deps
