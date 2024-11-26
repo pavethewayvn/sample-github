@@ -32,7 +32,7 @@ jobs:
 
       - run: npm ci --legacy-peer-deps
       - run: npx cypress install
-      # - uses: nrwl/nx-set-shas@v4
+      - uses: nrwl/nx-set-shas@v4
 
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
       # - run: npx nx-cloud record -- echo Hello World
@@ -42,4 +42,4 @@ jobs:
       - run: npx nx reset
       # - run: npx nx graph --file=graph.json
       # - run: npx nx affected -t lint test build e2e --base=master --head=HEAD
-      - run: npx nx affected -t lint test build e2e --base=master --head=HEAD --parallel
+      - run: npx nx affected -t lint test build e2e --base=master --head=HEAD --parallel --verbose
